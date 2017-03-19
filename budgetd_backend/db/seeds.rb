@@ -36,3 +36,15 @@ lynn.create_budget({
   total: 9.99,
   originalTotal: 12.99
 })
+
+harrison.budget.sub_budgets.create({
+  amount: 10.99,
+  name: "Coffee",
+  originalAmount: 19.00
+})
+
+harrison.budget.sub_budgets.create({
+  amount: 78.99,
+  name: "Food",
+  originalAmount: 100.00
+})
