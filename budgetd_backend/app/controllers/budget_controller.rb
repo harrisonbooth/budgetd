@@ -27,8 +27,12 @@ class BudgetController < ApplicationController
 
   def newTransaction
     postBody = params[:newTransaction]
-    subBudgetForTransaction = params[:id]
+    subBudgetForTransaction = SubBudget.find(params[:id])
 
+    subBudgetForTransaction.transactions.create({
+      amount: postBody.amount,
+      location: postBody.location
+    })
   end
 
 end
