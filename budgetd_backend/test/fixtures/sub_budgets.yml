@@ -1,12 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   amount: 19.99
   name: Coffee
   budget_id: 1
   originalAmount: 39.49
 
 two:
+  id: 2
   amount: 44.21
   name: Food
   budget_id: 2

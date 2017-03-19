@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  sub_budget_id: 
-  amount: 9.99
-  location: MyString
+  sub_budget_id: 1
+  amount: 1.60
+  location: Filament
 
 two:
-  sub_budget_id: 
-  amount: 9.99
-  location: MyString
+  sub_budget_id: 2
+  amount: 32.20
+  location: Asda
