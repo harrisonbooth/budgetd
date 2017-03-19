@@ -2,8 +2,8 @@ class BudgetController < ApplicationController
 
   before_action :authenticate_user!
 
-  def index
-    render json: current_user.budget.to_json(include: {
+  def userBudget
+    return current_user.budget.to_json(include: {
         sub_budgets: {
           include: {
             transactions: {
@@ -15,14 +15,25 @@ class BudgetController < ApplicationController
     }, except: [:created_at, :updated_at])
   end
 
+  def index
+    render json: userBudget()
+  end
+
   def newSubBudget
     postBody = params[:newSubBudget]
+    budget = current_user.budget
 
-    current_user.budget.sub_budgets.create({
+    budget.sub_budgets.create({
       name: postBody.name,
       amount: postBody.amount,
       originalAmount: postBody.amount,
     })
+
+    newTotal = budget.total - postBody.amount
+
+    Budget.update(budget.id, total: newTotal)
+
+    render json: userBudget()
   end
 
   def newTransaction
@@ -33,6 +44,12 @@ class BudgetController < ApplicationController
       amount: postBody.amount,
       location: postBody.location
     })
+
+    newAmount = subBudgetForTransaction.amount - postBody.amount
+
+    SubBudget.update(subBudgetForTransaction.id, amount: newAmount)
+
+    render json: userBudget()
   end
 
 end
