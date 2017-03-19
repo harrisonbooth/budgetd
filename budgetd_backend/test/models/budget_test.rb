@@ -8,4 +8,12 @@ class BudgetTest < ActiveSupport::TestCase
   test "Budget user is not hard coded" do
     assert_equal "Lynn", budgets(:two).user.firstname
   end
+
+  test "Budget has total" do
+    assert_equal 7.98, budgets(:one).total
+  end
+
+  test "Budget total is not hard coded" do
+    assert_equal 5.10, budgets(:two).total
+  end
 end
