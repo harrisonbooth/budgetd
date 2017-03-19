@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170319134702) do
+ActiveRecord::Schema.define(version: 20170319135822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,17 @@ ActiveRecord::Schema.define(version: 20170319134702) do
   end
 
   add_index "budgets", ["user_id"], name: "index_budgets_on_user_id", using: :btree
+
+  create_table "sub_budgets", force: :cascade do |t|
+    t.decimal  "amount"
+    t.string   "name"
+    t.integer  "budget_id"
+    t.decimal  "originalAmount"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "sub_budgets", ["budget_id"], name: "index_sub_budgets_on_budget_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -47,4 +58,5 @@ ActiveRecord::Schema.define(version: 20170319134702) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "budgets", "users"
+  add_foreign_key "sub_budgets", "budgets"
 end
