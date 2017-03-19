@@ -16,4 +16,12 @@ class TransactionTest < ActiveSupport::TestCase
   test "Transaction amount is not hard coded" do
     assert_equal 32.20, transactions(:two).amount
   end
+
+  test "Transaction has a location" do
+    assert_equal "Filament", transactions(:one).location
+  end
+
+  test "Transaction location is not hard coded" do
+    assert_equal "Asda", transactions(:two).location
+  end
 end
