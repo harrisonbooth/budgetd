@@ -7,12 +7,11 @@
 one:
   email: one@example.com
   encrypted_password: password
-  # surname: Booth
+  surname: Booth
   # firstname: Harrison
 
 two:
   email: two@example.com
   encrypted_password: password1
-  # surname: Middleton
+  surname: Middleton
   # firstname: Lynn
-#  column: value
