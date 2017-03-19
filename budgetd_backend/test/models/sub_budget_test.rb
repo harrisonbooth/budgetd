@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class SubBudgetTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "SubBudget has amount" do
+    assert_equal 19.99, subBudgets(:one).amount
+  end
 end
