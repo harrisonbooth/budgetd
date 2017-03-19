@@ -24,4 +24,12 @@ class SubBudgetTest < ActiveSupport::TestCase
   test "SubBudget budget (and user) is not hard coded" do
     assert_equal "Lynn", sub_budgets(:two).budget.user.firstname
   end
+
+  test "SubBudget has an original amount" do
+    assert_equal 39.49, sub_budgets(:one).originalAmount
+  end
+
+  test "SubBudget original amount is not hard coded" do
+    assert_equal 98.12, sub_budgets(:two).originalAmount
+  end
 end
