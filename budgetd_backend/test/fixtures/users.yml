@@ -8,10 +8,10 @@ one:
   email: one@example.com
   encrypted_password: password
   surname: Booth
-  # firstname: Harrison
+  firstname: Harrison
 
 two:
   email: two@example.com
   encrypted_password: password1
   surname: Middleton
-  # firstname: Lynn
+  firstname: Lynn
