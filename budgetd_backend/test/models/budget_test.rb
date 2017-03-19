@@ -16,4 +16,12 @@ class BudgetTest < ActiveSupport::TestCase
   test "Budget total is not hard coded" do
     assert_equal 5.10, budgets(:two).total
   end
+
+  test "Budget has original total" do
+    assert_equal 9.99, budgets(:one).originalTotal
+  end
+
+  test "Budget original total is not hard coded" do
+    assert_equal 10.93, budgets(:two).originalTotal
+  end
 end
