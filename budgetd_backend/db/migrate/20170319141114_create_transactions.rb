@@ -1,7 +1,7 @@
 class CreateTransactions < ActiveRecord::Migration
   def change
     create_table :transactions do |t|
-      t.references :subBudget, index: true, foreign_key: true
+      t.references :sub_budget, index: true, foreign_key: true
       t.decimal :amount
       t.string :location
 

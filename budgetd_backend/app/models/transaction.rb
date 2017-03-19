@@ -1,3 +1,3 @@
 class Transaction < ActiveRecord::Base
-  belongs_to :subBudget
+  belongs_to :sub_budget
 end
