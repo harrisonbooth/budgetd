@@ -6,6 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Transaction.delete_all
+SubBudget.delete_all
+Budget.delete_all
+User.delete_all
+
 harrison = User.create({
   firstname: "Harrison",
   surname: "Booth",
@@ -25,4 +30,9 @@ lynn = User.create({
 harrison.create_budget({
   total: 10.99,
   originalTotal: 10.99,
+})
+
+lynn.create_budget({
+  total: 9.99,
+  originalTotal: 12.99
 })
