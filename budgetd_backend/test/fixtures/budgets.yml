@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user_id: 
-  total: 9.99
+  user_id: 1
+  total: 7.98
   originalTotal: 9.99
 
 two:
-  user_id: 
-  total: 9.99
-  originalTotal: 9.99
+  user_id: 2
+  total: 5.10
+  originalTotal: 10.93
