@@ -2,12 +2,12 @@
 
 one:
   amount: 19.99
-  name: MyString
+  name: Coffee
   budget_id: 1
   originalAmount: 39.49
 
 two:
   amount: 44.21
-  name: MyString
+  name: Food
   budget_id: 2
   originalAmount: 98.12
