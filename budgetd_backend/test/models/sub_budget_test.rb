@@ -16,4 +16,12 @@ class SubBudgetTest < ActiveSupport::TestCase
   test "SubBudget name is not hard coded" do
     assert_equal "Food", sub_budgets(:two).name
   end
+
+  test "SubBudget has budget, which has user" do
+    assert_equal "Harrison", sub_budgets(:one).budget.user.firstname
+  end
+
+  test "SubBudget budget (and user) is not hard coded" do
+    assert_equal "Lynn", sub_budgets(:two).budget.user.firstname
+  end
 end
