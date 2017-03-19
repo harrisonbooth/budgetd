@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
+
+  post 'budget/:id/newTransaction' => 'budget#newTransaction'
+  post 'budget/newSubBudget' => 'budget#newSubBudget'
+  resources :budget
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
