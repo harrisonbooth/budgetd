@@ -42,7 +42,7 @@ class BudgetContainer extends React.Component{
   render() {
     if(!this.state.budget){
       return (
-        <NewBudget onCreateBudget={this.onCreateBudget}/>
+        <NewBudget onCreateBudget={this.onCreateBudget.bind(this)}/>
       )
     }
 
