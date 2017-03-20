@@ -24,6 +24,10 @@ class NewSubBudget extends React.Component{
   createSubBudget(event) {
     event.preventDefault()
 
+    if(!this.state.name.length){
+      return
+    }
+
     const request = new XMLHttpRequest();
     request.open('POST', 'http://localhost:5000/budget/subbudgets')
     request.setRequestHeader('Content-type', 'application/json')
