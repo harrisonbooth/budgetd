@@ -52,4 +52,13 @@ class BudgetController < ApplicationController
     render json: userBudget()
   end
 
+  def create
+    current_user.create_budget({
+      total: params[:budget][:total],
+      originalTotal: params[:budget][:total]
+    })
+
+    render json: userBudget()
+  end
+
 end

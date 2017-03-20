@@ -12,16 +12,12 @@ Budget.delete_all
 User.delete_all
 
 harrison = User.create({
-  firstname: "Harrison",
-  surname: "Booth",
   email: "harrison@example.com",
   password: "password",
   password_confirmation: "password"
 })
 
 lynn = User.create({
-  firstname: "Lynn",
-  surname: "Middleton",
   email: "lynn@example.com",
   password: "password",
   password_confirmation: "password"

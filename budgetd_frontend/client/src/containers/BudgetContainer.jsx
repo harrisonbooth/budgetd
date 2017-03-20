@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../components/Header'
 import Sidebar from '../components/Sidebar'
+import NewBudget from '../components/NewBudget'
 import {browserHistory} from 'react-router'
 
 class BudgetContainer extends React.Component{
@@ -36,9 +37,7 @@ class BudgetContainer extends React.Component{
   render() {
     if(!this.state.budget){
       return (
-        <div className="loading">
-          loading...
-        </div>
+        <NewBudget/>
       )
     }
 
