@@ -6,14 +6,10 @@ class SignUp extends React.Component {
     super(props)
     this.signUp = this.signUp.bind(this)
     this.handleOnChangeEmail = this.handleOnChangeEmail.bind(this)
-    this.handleOnChangeFirstname = this.handleOnChangeFirstname.bind(this)
-    this.handleOnChangeSurname = this.handleOnChangeSurname.bind(this)
     this.handleOnChangePassword = this.handleOnChangePassword.bind(this)
     this.handleOnChangePassConf = this.handleOnChangePassConf.bind(this)
     this.state = {
       email:"",
-      firstname: "",
-      surname: "",
       password:"",
       passwordConfirmation:""
     }
@@ -37,8 +33,6 @@ class SignUp extends React.Component {
     request.send(JSON.stringify({
       user: {
         email: this.state.email,
-        firstname: this.state.firstname,
-        surname: this.state.surname,
         password: this.state.password,
         password_confirmation: this.state.passwordConfirmation
       }
@@ -47,14 +41,6 @@ class SignUp extends React.Component {
 
   handleOnChangeEmail(event) {
     this.setState({email: event.target.value})
-  }
-
-  handleOnChangeFirstname(event) {
-    this.setState({firstname: event.target.value})
-  }
-
-  handleOnChangeSurname(event) {
-    this.setState({surname: event.target.value})
   }
 
   handleOnChangePassword(event) {
@@ -69,8 +55,6 @@ class SignUp extends React.Component {
     return (
       <form onSubmit={this.signUp} className='login-form'>
         <input type="text" onChange={this.handleOnChangeEmail}  placeholder="Email" />
-        <input type="text" onChange={this.handleOnChangeFirstname} placeholder="Firstname"/>
-        <input type="text" onChange={this.handleOnChangeSurname} placeholder="Surname"/>
         <input type="password" onChange={this.handleOnChangePassword}  placeholder="Password" />
         <input type="password" onChange={this.handleOnChangePassConf}  placeholder="Password Confirmation" />
 
