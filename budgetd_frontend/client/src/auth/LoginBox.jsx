@@ -2,7 +2,6 @@ import React from 'react'
 import {Link} from 'react-router'
 import SignIn from './SignIn'
 import SignUp from './SignUp'
-import SignOut from './SignOut'
 
 class LoginBox extends React.Component {
 
