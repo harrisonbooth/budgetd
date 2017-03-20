@@ -2,15 +2,18 @@ import React from 'react'
 import Header from '../components/Header'
 import Sidebar from '../components/Sidebar'
 import NewBudget from '../components/NewBudget'
+import SubBudgetWindow from './SubBudgetWindow'
 import {browserHistory} from 'react-router'
 
 class BudgetContainer extends React.Component{
   constructor() {
     super()
     this.state = {
-      budget: null
+      budget: null,
+      selectedSubBudget: null
     }
 
+    this.onSelectSubBudget = this.onSelectSubBudget.bind(this)
     this.onCreateBudget = this.onCreateBudget.bind(this)
   }
 
@@ -39,6 +42,10 @@ class BudgetContainer extends React.Component{
     this.setState({budget: budget})
   }
 
+  onSelectSubBudget(subBudget) {
+    this.setState({selectedSubBudget: subBudget})
+  }
+
   render() {
     if(!this.state.budget){
       return (
@@ -50,9 +57,8 @@ class BudgetContainer extends React.Component{
       <div className='budget-container'>
         <Header budget={this.state.budget}/>
         <div className='budget-container-body'>
-          <Sidebar budget={this.state.budget}/>
-          <div className='subbudget-window'>
-          </div>
+          <Sidebar budget={this.state.budget} onSelectSubBudget={this.onSelectSubBudget.bind(this)}/>
+          <SubBudgetWindow subBudget={this.state.selectedSubBudget}/>
         </div>
       </div>
     )
