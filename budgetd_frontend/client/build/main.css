@@ -120,3 +120,38 @@ hr {
  border-color: #3A4262;
  margin: 0
 }
+
+.new-subbudget-form {
+  text-align: center;
+  margin-top: 10px
+}
+
+.new-subbudget-form * {
+  display: block;
+  margin: 0 auto;
+}
+
+.new-subbudget-form input {
+  margin-top: 3px
+}
+
+.new-subbudget-form button {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  -webkit-appearance: none;
+  background-color: #3A4262;
+  border: none;
+  height: 40px;
+  color: white;
+  font-size: 1em;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.new-subbudget-form button:hover {
+  background-color: #5A6282
+}
+
+.new-subbudget-form button:active {
+  background-color: #3A4262
+}
