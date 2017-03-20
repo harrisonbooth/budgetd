@@ -5,7 +5,6 @@ import BudgetBar from './BudgetBar'
 class Header extends React.Component {
   constructor(props) {
     super(props)
-    console.log(this.props);
   }
 
 

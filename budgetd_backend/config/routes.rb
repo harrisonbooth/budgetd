@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  post 'budget/:id/newTransaction' => 'budget#newTransaction'
-  post 'budget/newSubBudget' => 'budget#newSubBudget'
+  post 'budget/subBudgets/:id/newTransaction' => 'budget#newTransaction'
+  post 'budget/subbudgets' => 'budget#newSubBudget'
   resources :budget
   resources :users
 

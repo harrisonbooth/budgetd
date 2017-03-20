@@ -24,7 +24,7 @@ class BudgetContainer extends React.Component{
 
     request.onload = () => {
       if(request.status === 200){
-        console.log("request: ", request.responseText)
+        // console.log("request: ", request.responseText)
         var data = JSON.parse(request.responseText)
         this.setState( { budget: data } )
       } else{
