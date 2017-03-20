@@ -28,8 +28,8 @@ lynn = User.create({
 })
 
 harrison.create_budget({
-  total: 10.99,
-  originalTotal: 10.99,
+  total: 30,
+  originalTotal: 100.99,
 })
 
 lynn.create_budget({

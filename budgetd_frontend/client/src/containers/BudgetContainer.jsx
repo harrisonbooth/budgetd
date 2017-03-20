@@ -6,34 +6,34 @@ class BudgetContainer extends React.Component{
   constructor() {
     super()
 
-    this.setUser = this.setUser.bind(this)
+    // this.setUser = this.setUser.bind(this)
     this.state = {
-      currentUser: null
+      budget: null
     }
   }
 
-  setUser(user) {
-    this.setState({currentUser:user, favlist: []})
-  }
+  // setUser(user) {
+  //   this.setState({currentUser:user, favlist: []})
+  // }
 
-  fetchUser() {
-    const request = new XMLHttpRequest()
-    request.open('GET', this.props.url + 'users.json')
-    request.setRequestHeader('content-type', 'application/json')
-    request.withCredentials = true
-
-    request.onload = () => {
-      if(request.status === 200){
-        const receivedUser = JSON.parse(request.responseText)
-        this.setUser(receivedUser)
-      } else if(request.status === 401){
-        this.setUser(null)
-        browserHistory.goBack()
-      }
-    }
-
-    request.send(null)
-  }
+  // fetchUser() {
+  //   const request = new XMLHttpRequest()
+  //   request.open('GET', 'http://localhost:5000/' + 'users.json')
+  //   request.setRequestHeader('content-type', 'application/json')
+  //   request.withCredentials = true
+  //
+  //   request.onload = () => {
+  //     if(request.status === 200){
+  //       const receivedUser = JSON.parse(request.responseText)
+  //       this.setUser(receivedUser)
+  //     } else if(request.status === 401){
+  //       this.setUser(null)
+  //       browserHistory.goBack()
+  //     }
+  //   }
+  //
+  //   request.send(null)
+  // }
 
   componentDidMount() {
     var url = 'http://localhost:5000/budget'
@@ -47,7 +47,6 @@ class BudgetContainer extends React.Component{
       if(request.status === 200){
         console.log("request: ", request.responseText)
         var data = JSON.parse(request.responseText)
-        this.fetchUser()
         this.setState( { budget: data } )
       } else{
         console.log("Uh oh you're not logged in!")
@@ -59,9 +58,17 @@ class BudgetContainer extends React.Component{
   }
 
   render() {
+    if(!this.state.budget){
+      return (
+        <div className="loading">
+          loading...
+        </div>
+      )
+    }
+
     return (
       <div className='budget-container'>
-        <Header currentUser={this.state.currentUser}/>
+        <Header budget={this.state.budget} currentUser={this.state.currentUser}/>
         <div className='sidebar'>
 
         </div>
