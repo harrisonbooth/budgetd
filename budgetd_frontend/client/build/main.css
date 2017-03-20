@@ -73,6 +73,9 @@ progress {
 .sidebar-wrapper {
   float: left;
   background-color: #3A4262;
+  box-shadow: 5px 5px 15px #333333;
+  margin-left: 5px;
+  margin-top: 5px
 }
 
 .overview-wrapper {
@@ -92,7 +95,7 @@ progress {
 .subbudget-list {
   background-color: #606DA1;
   overflow: scroll;
-  height: 400px
+  height: 300px
 }
 
 .subbudget {
