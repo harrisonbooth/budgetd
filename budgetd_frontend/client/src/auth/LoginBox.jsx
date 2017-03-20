@@ -25,7 +25,7 @@ class LoginBox extends React.Component {
 
     request.onload = () => {
       if(request.status === 200){
-        const receivedUser = JSON.parse(request.resonseText)
+        const receivedUser = JSON.parse(request.responseText)
         this.setUser(receivedUser)
       } else if(request.status === 401){
         this.setUser(null)
@@ -42,7 +42,7 @@ class LoginBox extends React.Component {
   render() {
     if(this.state.currentUser){
       var children = <div>
-        <h4>Welcome back, this.state.currentUser.firstname.</h4>
+        <h4>Welcome back, {this.state.currentUser.firstname}.</h4>
         <Link className='logged-in-link' to='/budget'>View your budget</Link>
       </div>
     } else {
