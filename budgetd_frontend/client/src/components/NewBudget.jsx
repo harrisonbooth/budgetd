@@ -12,7 +12,8 @@ class NewBudget extends React.Component{
   }
 
   handleAmountChange(event) {
-    this.setState({total: event.target.value})
+    const enteredTotal = (parseInt(event.target.value).toFixed(2)) * 100
+    this.setState({total: enteredTotal})
   }
 
   createBudget(event) {
@@ -25,7 +26,8 @@ class NewBudget extends React.Component{
 
     request.onload = () => {
       if(request.status === 201){
-        browserHistory.goBack()
+        const budget = JSON.parse(request.responseText)
+        this.onCreateBudget(budget)
       }
     }
     request.send(JSON.stringify({
@@ -38,7 +40,7 @@ class NewBudget extends React.Component{
   render() {
     return (
       <form onSubmit={this.createBudget} className='new-budget-form'>
-        <input type="number" onChange={this.handleOnChangeAmount}  placeholder="Monthly Total" />
+        <input type="number" onChange={this.handleAmountChange}  placeholder="Monthly Total" />
         <button onClick={this.signUp}>  Create budget </button>
       </form>
     )

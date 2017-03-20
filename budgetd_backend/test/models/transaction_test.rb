@@ -10,11 +10,11 @@ class TransactionTest < ActiveSupport::TestCase
   end
 
   test "Transaction has an amount" do
-    assert_equal 1.60, transactions(:one).amount
+    assert_equal 160, transactions(:one).amount
   end
 
   test "Transaction amount is not hard coded" do
-    assert_equal 32.20, transactions(:two).amount
+    assert_equal 3220, transactions(:two).amount
   end
 
   test "Transaction has a location" do

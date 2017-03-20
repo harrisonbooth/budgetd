@@ -19,41 +19,42 @@ class BudgetController < ApplicationController
     render json: userBudget()
   end
 
-  def newSubBudget
-    postBody = params[:newSubBudget]
-    budget = current_user.budget
-
-    budget.sub_budgets.create({
-      name: postBody.name,
-      amount: postBody.amount,
-      originalAmount: postBody.amount,
-    })
-
-    newTotal = budget.total - postBody.amount
-
-    Budget.update(budget.id, total: newTotal)
-
-    render json: userBudget()
-  end
-
-  def newTransaction
-    postBody = params[:newTransaction]
-    subBudgetForTransaction = SubBudget.find(params[:id])
-
-    subBudgetForTransaction.transactions.create({
-      amount: postBody.amount,
-      location: postBody.location
-    })
-
-    newAmount = subBudgetForTransaction.amount - postBody.amount
-
-    SubBudget.update(subBudgetForTransaction.id, amount: newAmount)
-
-    render json: userBudget()
-  end
+  # def newSubBudget
+  #   postBody = params[:newSubBudget]
+  #   budget = current_user.budget
+  #
+  #   budget.sub_budgets.create({
+  #     name: postBody.name,
+  #     amount: postBody.amount,
+  #     originalAmount: postBody.amount,
+  #   })
+  #
+  #   newTotal = budget.total - postBody.amount
+  #
+  #   Budget.update(budget.id, total: newTotal)
+  #
+  #   render json: userBudget()
+  # end
+  #
+  # def newTransaction
+  #   postBody = params[:newTransaction]
+  #   subBudgetForTransaction = SubBudget.find(params[:id])
+  #
+  #   subBudgetForTransaction.transactions.create({
+  #     amount: postBody.amount,
+  #     location: postBody.location
+  #   })
+  #
+  #   newAmount = subBudgetForTransaction.amount - postBody.amount
+  #
+  #   SubBudget.update(subBudgetForTransaction.id, amount: newAmount)
+  #
+  #   render json: userBudget()
+  # end
 
   def create
-    current_user.create_budget({
+    Budget.create({
+      user_id: current_user.id,
       total: params[:budget][:total],
       originalTotal: params[:budget][:total]
     })

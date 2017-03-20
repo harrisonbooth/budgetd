@@ -24,33 +24,33 @@ lynn = User.create({
 })
 
 harrison.create_budget({
-  total: 30,
-  originalTotal: 100.99,
+  total: 3000,
+  originalTotal: 10099,
 })
 
 lynn.create_budget({
-  total: 9.99,
-  originalTotal: 12.99
+  total: 999,
+  originalTotal: 1299
 })
 
 harrison.budget.sub_budgets.create({
-  amount: 10.99,
+  amount: 1099,
   name: "Coffee",
-  originalAmount: 19.00
+  originalAmount: 1900
 })
 
 harrison.budget.sub_budgets.create({
-  amount: 78.99,
+  amount: 7899,
   name: "Food",
-  originalAmount: 100.00
+  originalAmount: 10000
 })
 
 harrison.sub_budgets[0].transactions.create({
-  amount: 1.60,
+  amount: 160,
   location: "Filament"
 })
 
 harrison.sub_budgets[0].transactions.create({
-  amount: 2.20,
+  amount: 220,
   location: "Noir"
 })

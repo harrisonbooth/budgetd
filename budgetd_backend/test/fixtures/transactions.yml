@@ -2,10 +2,10 @@
 
 one:
   sub_budget_id: 1
-  amount: 1.60
+  amount: 160
   location: Filament
 
 two:
   sub_budget_id: 2
-  amount: 32.20
+  amount: 3220
   location: Asda

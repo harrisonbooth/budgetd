@@ -10,6 +10,8 @@ class BudgetContainer extends React.Component{
     this.state = {
       budget: null
     }
+
+    this.onCreateBudget = this.onCreateBudget.bind(this)
   }
 
   componentDidMount() {
@@ -31,13 +33,16 @@ class BudgetContainer extends React.Component{
       }
     }
     request.send(null)
+  }
 
+  onCreateBudget(budget) {
+    this.setState({budget: budget})
   }
 
   render() {
     if(!this.state.budget){
       return (
-        <NewBudget/>
+        <NewBudget onCreateBudget={this.onCreateBudget}/>
       )
     }
 

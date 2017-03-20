@@ -3,11 +3,11 @@
 one:
   id: 1
   user_id: 1
-  total: 7.98
-  originalTotal: 9.99
+  total: 798
+  originalTotal: 999
 
 two:
   id: 2
   user_id: 2
-  total: 5.10
-  originalTotal: 10.93
+  total: 510
+  originalTotal: 1093

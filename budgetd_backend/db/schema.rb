@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170320142238) do
+ActiveRecord::Schema.define(version: 20170320150638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "budgets", force: :cascade do |t|
     t.integer  "user_id"
-    t.decimal  "total"
-    t.decimal  "originalTotal"
+    t.integer  "total"
+    t.integer  "originalTotal"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
@@ -27,10 +27,10 @@ ActiveRecord::Schema.define(version: 20170320142238) do
   add_index "budgets", ["user_id"], name: "index_budgets_on_user_id", using: :btree
 
   create_table "sub_budgets", force: :cascade do |t|
-    t.decimal  "amount"
+    t.integer  "amount"
     t.string   "name"
     t.integer  "budget_id"
-    t.decimal  "originalAmount"
+    t.integer  "originalAmount"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20170320142238) do
 
   create_table "transactions", force: :cascade do |t|
     t.integer  "sub_budget_id"
-    t.decimal  "amount"
+    t.integer  "amount"
     t.string   "location"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false

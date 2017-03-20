@@ -2,14 +2,14 @@
 
 one:
   id: 1
-  amount: 19.99
+  amount: 1999
   name: Coffee
   budget_id: 1
-  originalAmount: 39.49
+  originalAmount: 3949
 
 two:
   id: 2
-  amount: 44.21
+  amount: 4421
   name: Food
   budget_id: 2
-  originalAmount: 98.12
+  originalAmount: 9812
