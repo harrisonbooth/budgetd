@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post 'budget/:id/newTransaction' => 'budget#newTransaction'
   post 'budget/newSubBudget' => 'budget#newSubBudget'
   resources :budget
+  resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
