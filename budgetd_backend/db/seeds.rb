@@ -45,6 +45,90 @@ harrison.budget.sub_budgets.create({
   originalAmount: 10000
 })
 
+harrison.budget.sub_budgets.create({
+  amount: 1099,
+  name: "Coffee",
+  originalAmount: 1900
+})
+
+harrison.budget.sub_budgets.create({
+  amount: 7899,
+  name: "Food",
+  originalAmount: 10000
+})
+
+harrison.budget.sub_budgets.create({
+  amount: 1099,
+  name: "Coffee",
+  originalAmount: 1900
+})
+
+harrison.budget.sub_budgets.create({
+  amount: 7899,
+  name: "Food",
+  originalAmount: 10000
+})
+
+harrison.budget.sub_budgets.create({
+  amount: 1099,
+  name: "Coffee",
+  originalAmount: 1900
+})
+
+harrison.budget.sub_budgets.create({
+  amount: 7899,
+  name: "Food",
+  originalAmount: 10000
+})
+
+harrison.budget.sub_budgets.create({
+  amount: 1099,
+  name: "Coffee",
+  originalAmount: 1900
+})
+
+harrison.budget.sub_budgets.create({
+  amount: 7899,
+  name: "Food",
+  originalAmount: 10000
+})
+
+harrison.budget.sub_budgets.create({
+  amount: 1099,
+  name: "Coffee",
+  originalAmount: 1900
+})
+
+harrison.budget.sub_budgets.create({
+  amount: 7899,
+  name: "Food",
+  originalAmount: 10000
+})
+
+harrison.budget.sub_budgets.create({
+  amount: 1099,
+  name: "Coffee",
+  originalAmount: 1900
+})
+
+harrison.budget.sub_budgets.create({
+  amount: 7899,
+  name: "Food",
+  originalAmount: 10000
+})
+
+harrison.budget.sub_budgets.create({
+  amount: 1099,
+  name: "Coffee",
+  originalAmount: 1900
+})
+
+harrison.budget.sub_budgets.create({
+  amount: 7899,
+  name: "Food",
+  originalAmount: 10000
+})
+
 harrison.sub_budgets[0].transactions.create({
   amount: 160,
   location: "Filament"
