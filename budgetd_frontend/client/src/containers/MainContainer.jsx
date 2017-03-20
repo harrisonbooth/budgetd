@@ -7,7 +7,6 @@ const Main = (props) => (
 )
 
 const { element } = React.PropTypes
-console.log(element);
 
 Main.propTypes = {
   children: element.isRequired
