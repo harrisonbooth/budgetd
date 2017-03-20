@@ -4,6 +4,8 @@ body, html {
   margin: 0
 }
 
+/* Header */
+
 progress {
   -webkit-appearance: none;
   width: 600px
@@ -58,4 +60,10 @@ progress {
 
 .sign-out-button:active {
   background-color: #323A55;
+}
+
+/* Sidebar */
+
+.sidebar-wrapper {
+  float: left;
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from '../components/Header'
+import Sidebar from '../components/Sidebar'
 import {browserHistory} from 'react-router'
 
 class BudgetContainer extends React.Component{
