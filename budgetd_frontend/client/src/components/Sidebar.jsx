@@ -11,7 +11,7 @@ class Sidebar extends React.Component {
     return (
       <div className="sidebar-wrapper">
         <Overview total={this.props.budget.total} originalTotal={this.props.budget.originalTotal}/>
-        <SubBudgetList subbudgets={this.props.budget.sub_budgets}/>
+        <SubBudgetList subBudgets={this.props.budget.sub_budgets}/>
       </div>
     )
   }

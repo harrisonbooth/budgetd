@@ -1,7 +1,13 @@
 body, html {
   height: 100%;
   width: 100%;
-  margin: 0
+  margin: 0;
+  background-color: #8599E1;
+  overflow: hidden;
+}
+
+.budget-container-body {
+  width: 100%;
 }
 
 /* Header */
@@ -66,4 +72,48 @@ progress {
 
 .sidebar-wrapper {
   float: left;
+  background-color: #3A4262;
+}
+
+.overview-wrapper {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.overview-wrapper p {
+  margin-left: 20px
+}
+
+.overview-wrapper * {
+  color: white;
+  font-family: sans-serif;
+}
+
+.subbudget-list {
+  background-color: #606DA1;
+  overflow: scroll;
+  height: 600px
+}
+
+.subbudget {
+  color: white;
+  font-family: sans-serif;
+}
+
+.subbudget p {
+  display:inline-block;
+  margin: 5px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.subbudget-amount {
+  float: right;
+}
+
+hr {
+ border-width: 0.5px;
+ border-style: solid;
+ border-color: #3A4262;
+ margin: 0
 }
