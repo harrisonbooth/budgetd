@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 # Authentication gem
 gem 'devise'
+gem 'rack-cors', :require => 'rack/cors'
 
 # -----------------------------
 

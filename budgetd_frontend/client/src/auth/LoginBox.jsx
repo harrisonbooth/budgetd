@@ -7,7 +7,7 @@ class LoginBox extends React.Component {
 
   constructor(props) {
     super(props)
-    this.setUser = thsi.setUser.bind(this)
+    this.setUser = this.setUser.bind(this)
     this.state = {
       currentUser: null
     }
@@ -41,12 +41,12 @@ class LoginBox extends React.Component {
 
   render() {
     if(this.state.currentUser){
-      const children = <div>
+      var children = <div>
         <h4>Welcome back, this.state.currentUser.firstname.</h4>
         <Link className='logged-in-link' to='/budget'>View your budget</Link>
       </div>
     } else {
-      const children = <div>
+      var children = <div>
         <h4>Please sign in</h4>
         <SignIn url={this.props.url + 'users/sign_in.json'} onSignIn={this.setUser}/>
         <p>New to Budget'd? Sign up here</p>
