@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { Link, browserHistory } from 'react-router'
 
 class SignOut extends React.Component{
 
@@ -17,7 +17,7 @@ class SignOut extends React.Component{
 
     request.onload = () => {
       if(request.status === 204){
-        this.props.onSignOut(null)
+        browserHistory.goBack()
       }
     }
 

@@ -31,7 +31,7 @@ class SignIn extends React.Component {
 
     request.onload = () => {
       if(request.status === 201){
-        const user = JSON.parse(requets.resonseText)
+        const user = JSON.parse(request.responseText)
         this.props.onSignIn(user)
       }
     }
