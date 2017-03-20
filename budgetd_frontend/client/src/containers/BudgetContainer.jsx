@@ -43,10 +43,8 @@ class BudgetContainer extends React.Component{
 
     return (
       <div className='budget-container'>
-        <Header budget={this.state.budget} currentUser={this.state.currentUser}/>
-        <div className='sidebar'>
-
-        </div>
+        <Header budget={this.state.budget}/>
+        <Sidebar budget={this.state.budget}/>
         <div className='subbudget-window'>
 
         </div>
