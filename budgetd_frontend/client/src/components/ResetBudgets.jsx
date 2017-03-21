@@ -26,7 +26,7 @@ class ResetBudgets extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="reset-button-wrapper">
         <button className="reset-button" onClick={this.reset}>Reset budgets</button>
       </div>
     )

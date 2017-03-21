@@ -62,9 +62,10 @@ progress {
 
 .sign-out-wrapper {
   height: 100%;
+  margin-right: 5px
 }
 
-.sign-out-button {
+.sign-out-button, .reset-button {
   -webkit-appearance: none;
   background-color: #323A55;
   border: none;
@@ -75,13 +76,20 @@ progress {
   font-weight: bold;
   margin-top: 20px;
   margin-bottom: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
-.sign-out-button:hover {
+.reset-button-wrapper {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.sign-out-button:hover, .reset-button:hover {
   background-color: #3A4262;
 }
 
-.sign-out-button:active {
+.sign-out-button:active, .reset-button:active {
   background-color: #323A55;
 }
 
