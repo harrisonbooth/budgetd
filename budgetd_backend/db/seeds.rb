@@ -44,3 +44,13 @@ harrison.budget.sub_budgets.create({
   name: "Food",
   originalAmount: 10000
 })
+
+harrison.budget.sub_budgets[0].transactions.create({
+  amount: 160,
+  location: "Filament"
+})
+
+harrison.budget.sub_budgets[0].transactions.create({
+  amount: 220,
+  location: "Noir"
+})
