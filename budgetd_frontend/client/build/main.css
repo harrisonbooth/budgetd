@@ -14,7 +14,7 @@ body, html {
 
 progress {
   -webkit-appearance: none;
-  width: 600px
+  /*width: 600px*/
 }
 
 ::-webkit-progress-bar {
@@ -154,4 +154,49 @@ hr {
 
 .new-subbudget-form button:active {
   background-color: #3A4262
+}
+
+/* SubBudget Window */
+
+.subbudget-transactions-wrapper {
+  width: 1050px;
+  float: left;
+  margin-top: 5px;
+  margin-left: 5px;
+  background-color: #606DA1;
+  box-shadow: 5px 5px 15px #333333;
+}
+
+.subbudget-header {
+  background-color: #3A4262;
+  font-family: sans-serif;
+  color: white;
+}
+
+.subbudget-header * {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+#subbudget-name {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+ .subbudget-overview {
+   display: inline-block;
+   vertical-align: middle;
+ }
+
+.subbudget-overview p {
+  margin: 3px
+}
+
+.budget-bar {
+}
+
+.subbudget-bar-wrapper {
+  display: inline-block;
 }

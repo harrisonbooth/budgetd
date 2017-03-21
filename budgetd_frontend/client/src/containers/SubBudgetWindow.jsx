@@ -1,5 +1,6 @@
 import React from 'react'
-import TransactionTable from '../components/TransactionTable'
+// import TransactionTable from '../components/TransactionTable'
+import SubBudgetHeader from '../components/SubBudgetHeader'
 
 class SubBudgetWindow extends React.Component {
   constructor(props) {
@@ -11,18 +12,19 @@ class SubBudgetWindow extends React.Component {
   }
 
   render() {
-    if(!this.state.subBudget){
+    if(!this.props.subBudget){
       return (
-        <div><h2>When you select a sub-budget, it will show up here!</h2></div>
+        <div className="subbudget-transactions-wrapper"><h2>When you select a sub-budget, it will show up here!</h2></div>
       )
     } else {
       return (
-        <div className="subBudget-transactions-wrapper">
-          <TransactionTable subBudget={this.state.subBudget} />
+        <div className="subbudget-transactions-wrapper">
+          <SubBudgetHeader subBudget={this.props.subBudget} />
         </div>
       )
     }
   }
 }
+// <TransactionTable subBudget={this.state.subBudget} />
 
 export default SubBudgetWindow
