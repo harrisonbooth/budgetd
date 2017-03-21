@@ -19,9 +19,26 @@ class SubBudgetWindow extends React.Component {
   }
 
   onCreateTransaction(budget) {
-    let transactionAmount = this.props.subBudget.transactions[this.props.subBudget.transactions.length - 1].amount
-    let newSubBudgetAmount = this.props.subBudget.amount - transactionAmount
-    this.setState({subBudgetAmount: newSubBudgetAmount})
+    const request = new XMLHttpRequest()
+    request.open('GET', 'http://localhost:5000/budget/subBudget/' + this.props.subBudget.id + '/transactions')
+    console.log(this.props.subBudget.id);
+    request.setRequestHeader('Content-type', 'application/json')
+    request.withCredentials = true
+    request.onload = () => {
+      const transactions = JSON.parse(request.responseText)
+
+      const sortedTransactions = transactions.sort((transaction1, transaction2) => {
+        return (new Date(transaction2.created_at) - new Date(transaction1.created_at))
+      })
+
+      const lastTransaction = sortedTransactions[0]
+
+      let transactionAmount = lastTransaction.amount
+      let newSubBudgetAmount = this.props.subBudget.amount - transactionAmount
+      this.setState({subBudgetAmount: newSubBudgetAmount})
+    }
+
+    request.send(null)
   }
 
   render() {

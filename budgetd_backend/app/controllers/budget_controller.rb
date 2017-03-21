@@ -7,7 +7,7 @@ class BudgetController < ApplicationController
         sub_budgets: {
           include: {
             transactions: {
-              except: [:created_at, :updated_at]
+              except: [:updated_at]
             }
           },
           except: [:created_at, :updated_at]
@@ -60,6 +60,10 @@ class BudgetController < ApplicationController
     })
 
     render json: userBudget()
+  end
+
+  def index_transactions
+    render json: Transaction.where({sub_budget_id: params[:id]})
   end
 
 end
