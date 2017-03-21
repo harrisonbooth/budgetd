@@ -11,7 +11,7 @@ class TransactionTable extends React.Component {
 
     if(!this.props.subBudget.transactions.length){
       return (
-        <div className="greyed-text">
+        <div className="greyed-text table-filler">
           <h2>Transactions will show up here once you've created some!</h2>
         </div>
       )
