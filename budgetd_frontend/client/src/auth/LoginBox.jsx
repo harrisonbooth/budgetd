@@ -41,12 +41,12 @@ class LoginBox extends React.Component {
 
   render() {
     if(this.state.currentUser){
-      var children = <div>
+      var children = <div className='login-box'>
         <h4>Welcome back!</h4>
         <Link className='logged-in-link' to='/budget'>View your budget</Link>
       </div>
     } else {
-      var children = <div>
+      var children = <div className='login-box'>
         <h4>Please sign in</h4>
         <SignIn url={this.props.url + 'users/sign_in.json'} onSignIn={this.setUser}/>
         <p>New to Budget'd? Sign up here</p>

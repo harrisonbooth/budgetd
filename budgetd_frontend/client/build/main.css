@@ -12,6 +12,16 @@ body, html {
 
 button {
   transition-duration: 0.2s
+  margin-top: 5px;
+  margin-bottom: 5px;
+  -webkit-appearance: none;
+  background-color: #3A4262;
+  border: none;
+  height: 40px;
+  color: white;
+  font-size: 1em;
+  font-family: sans-serif;
+  font-weight: bold;
 }
 
 /* Header */
@@ -302,4 +312,61 @@ hr {
 
 .new-transaction-form button:active {
   background-color: #3A4262
+}
+
+/* Login Box */
+
+.login-box, .home {
+  text-align: center;
+  background-color: #3A4262;
+  display: block;
+  margin: 0 auto;
+  margin-top: 30px;
+  font-family: sans-serif;
+  color: white;
+}
+
+.home {
+  width: 20%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  box-shadow: 5px 5px 15px #333333;
+}
+
+.login-box {
+  width: 100%;
+  background-color: #606DA1;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.login-box button {
+  background-color: #606DA1;
+  transition-duration: 0.2s;
+  width: 100px;
+}
+
+.login-box button:hover {
+  background-color: #3A4262
+}
+
+.login-box button:active {
+  background-color: #606DA1
+}
+
+.login-form {
+  width: 100%
+}
+
+.login-form * {
+  display: block;
+  margin: 0 auto;
+  margin-top: 5px;
+}
+
+.logged-in-link {
+  text-decoration: none;
+  font-family: sans-serif;
+  color: white;
+  text-decoration: underline;
 }
