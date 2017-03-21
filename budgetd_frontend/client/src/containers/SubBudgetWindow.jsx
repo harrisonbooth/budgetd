@@ -14,7 +14,7 @@ class SubBudgetWindow extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (!this.state.subBudget || this.state.subBudget.id !== nextProps.subBudget.id) {
-      this.setState({subBudget: nextProps.subBudget})
+      this.setState({subBudget: nextProps.subBudget, subBudgetAmount: nextProps.subBudget.amount})
     }
   }
 
@@ -34,7 +34,7 @@ class SubBudgetWindow extends React.Component {
       const lastTransaction = sortedTransactions[0]
 
       let transactionAmount = lastTransaction.amount
-      let newSubBudgetAmount = this.props.subBudget.amount - transactionAmount
+      let newSubBudgetAmount = this.state.subBudgetAmount - transactionAmount
       this.setState({subBudgetAmount: newSubBudgetAmount})
     }
 
@@ -49,9 +49,9 @@ class SubBudgetWindow extends React.Component {
     } else {
       return (
         <div className="subbudget-transactions-wrapper">
-          <SubBudgetHeader subBudgetAmount={this.state.subBudgetAmount} subBudget={this.props.subBudget} />
-          <TransactionTable subBudget={this.props.subBudget} />
-          <NewTransaction onCreateTransaction={this.onCreateTransaction.bind(this)} subBudget={this.props.subBudget} />
+          <SubBudgetHeader subBudgetAmount={this.state.subBudgetAmount} subBudget={this.state.subBudget} />
+          <TransactionTable subBudget={this.state.subBudget} />
+          <NewTransaction onCreateTransaction={this.onCreateTransaction.bind(this)} subBudget={this.state.subBudget} />
         </div>
       )
     }
