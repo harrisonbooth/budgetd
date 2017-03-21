@@ -12,7 +12,7 @@ class Header extends React.Component {
     return (
       <header className='header'>
         <h1 id="logo">Budget'd</h1>
-        <BudgetBar maxWidth={600} total={this.props.budget.total} originalTotal={this.props.budget.originalTotal}/>
+        <BudgetBar maxWidth={600} total={this.props.budgetTotal} originalTotal={this.props.budget.originalTotal}/>
         <SignOut url='http://localhost:5000/users/sign_out'/>
       </header>
     )

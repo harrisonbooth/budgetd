@@ -10,7 +10,8 @@ class BudgetContainer extends React.Component{
     super()
     this.state = {
       budget: null,
-      selectedSubBudget: null
+      selectedSubBudget: null,
+      newBudgetTotal: null
     }
 
     this.onSelectSubBudget = this.onSelectSubBudget.bind(this)
@@ -29,7 +30,7 @@ class BudgetContainer extends React.Component{
       if(request.status === 200){
         // console.log("request: ", request.responseText)
         var data = JSON.parse(request.responseText)
-        this.setState( { budget: data } )
+        this.setState( { budget: data, newBudgetTotal: data.total } )
       } else{
         console.log("Uh oh you're not logged in!")
         browserHistory.goBack()
@@ -39,11 +40,15 @@ class BudgetContainer extends React.Component{
   }
 
   onCreateBudget(budget) {
-    this.setState({budget: budget})
+    this.setState({budget})
   }
 
   onSelectSubBudget(subBudget) {
     this.setState({selectedSubBudget: subBudget})
+  }
+
+  onCreateSubBudget(newBudgetTotal) {
+    this.setState({newBudgetTotal})
   }
 
   render() {
@@ -55,9 +60,9 @@ class BudgetContainer extends React.Component{
 
     return (
       <div className='budget-container'>
-        <Header budget={this.state.budget}/>
+        <Header budgetTotal={this.state.newBudgetTotal} budget={this.state.budget}/>
         <div className='budget-container-body'>
-          <Sidebar budget={this.state.budget} onSelectSubBudget={this.onSelectSubBudget.bind(this)}/>
+          <Sidebar onCreateSubBudget={this.onCreateSubBudget.bind(this)} budget={this.state.budget} onSelectSubBudget={this.onSelectSubBudget.bind(this)}/>
           <SubBudgetWindow subBudget={this.state.selectedSubBudget}/>
         </div>
       </div>

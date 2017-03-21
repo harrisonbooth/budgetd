@@ -19,6 +19,7 @@ class Sidebar extends React.Component {
     let subBudgetAmount = budget.sub_budgets[budget.sub_budgets.length - 1].amount
     let newBudgetTotal = budget.total - subBudgetAmount
     this.setState({subBudgets: budget.sub_budgets, budgetTotal: newBudgetTotal})
+    this.props.onCreateSubBudget(newBudgetTotal)
   }
 
   render() {

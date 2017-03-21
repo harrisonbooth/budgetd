@@ -25,6 +25,7 @@ progress {
 
 ::-webkit-progress-value {
   border-radius: 2px;
+  transition-duration: 0.4s;
 }
 
 .red::-webkit-progress-value {
