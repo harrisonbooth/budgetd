@@ -16,7 +16,6 @@ class ResetBudgets extends React.Component {
 
     request.onload = () => {
       if(request.status === 200){
-        console.log(this.props.onResetBudgets);
         this.props.onResetBudgets()
       }
     }

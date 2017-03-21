@@ -85,6 +85,12 @@ class BudgetContainer extends React.Component{
     request.send(null)
   }
 
+  onReset() {
+    this.onCreateTransaction()
+    browserHistory.push('/#/budget')
+    window.location.reload()
+  }
+
   render() {
     if(!this.state.budget){
       return (
@@ -94,7 +100,7 @@ class BudgetContainer extends React.Component{
 
     return (
       <div className='budget-container'>
-        <Header onResetBudgets={this.onCreateTransaction.bind(this)} budgetTotal={this.state.newBudgetTotal} budget={this.state.budget}/>
+        <Header onResetBudgets={this.onReset.bind(this)} budgetTotal={this.state.newBudgetTotal} budget={this.state.budget}/>
         <div className='budget-container-body'>
           <Sidebar onCreateSubBudget={this.onCreateSubBudget.bind(this)} budget={this.state.budget} onSelectSubBudget={this.onSelectSubBudget.bind(this)}/>
           <SubBudgetWindow onCreateTransactionUpdateTopBar={this.onCreateTransaction.bind(this)} subBudget={this.state.selectedSubBudget}/>
