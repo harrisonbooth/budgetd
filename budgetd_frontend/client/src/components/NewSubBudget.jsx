@@ -16,7 +16,8 @@ class NewSubBudget extends React.Component{
   }
 
   handleAmountChange(event) {
-    const enteredAmount = (parseInt(event.target.value).toFixed(2)) * 100
+    const enteredAmount = (parseInt(event.target.value * 100))
+    console.log(enteredAmount);
     this.setState({amount: enteredAmount})
   }
 
@@ -54,7 +55,7 @@ class NewSubBudget extends React.Component{
     return (
       <form onSubmit={this.createSubBudget} className='new-subbudget-form'>
         <input type="text" onChange={this.handleNameChange}  placeholder="Name" />
-        <input type="number" onChange={this.handleAmountChange}  placeholder="Monthly Total" />
+        <input type="number" step="any" onChange={this.handleAmountChange}  placeholder="Monthly Total" />
         <button onClick={this.signUp}>  Create sub-budget </button>
       </form>
     )

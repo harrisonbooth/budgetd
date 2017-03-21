@@ -7,7 +7,7 @@ const TransactionTableRow = (props) => {
   return (
     <tr className="table-row">
       <td>{transactionLocation}</td>
-      <td>{transactionAmount}</td>
+      <td>£{transactionAmount}</td>
     </tr>
   )
 }

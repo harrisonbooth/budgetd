@@ -15,7 +15,8 @@ class NewTransaction extends React.Component {
   }
 
   handleAmountChange(event) {
-    const enteredAmount = (parseInt(event.target.value).toFixed(2)) * 100
+    console.log(event.target.value)
+    const enteredAmount = (parseInt(event.target.value * 100))
     this.setState({amount: enteredAmount})
   }
 
@@ -54,7 +55,7 @@ class NewTransaction extends React.Component {
     return (
       <form onSubmit={this.createTransaction} className='new-transaction-form'>
         <input type="text" onChange={this.handleLocationChange}  placeholder="Location" />
-        <input type="number" onChange={this.handleAmountChange}  placeholder="Amount" />
+        <input type="number" step="any" onChange={this.handleAmountChange}  placeholder="Amount" />
         <button onClick={this.createTransaction}>  Create transaction </button>
       </form>
     )
