@@ -15,7 +15,6 @@ class NewTransaction extends React.Component {
   }
 
   handleAmountChange(event) {
-    console.log(event.target.value)
     const enteredAmount = (parseInt(event.target.value * 100))
     this.setState({amount: enteredAmount})
   }

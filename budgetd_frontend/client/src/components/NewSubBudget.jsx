@@ -17,7 +17,6 @@ class NewSubBudget extends React.Component{
 
   handleAmountChange(event) {
     const enteredAmount = (parseInt(event.target.value * 100))
-    console.log(enteredAmount);
     this.setState({amount: enteredAmount})
   }
 

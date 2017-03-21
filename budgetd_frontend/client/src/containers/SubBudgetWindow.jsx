@@ -21,7 +21,6 @@ class SubBudgetWindow extends React.Component {
   onCreateTransaction(budget) {
     const request = new XMLHttpRequest()
     request.open('GET', 'http://localhost:5000/budget/subBudget/' + this.props.subBudget.id + '/transactions')
-    console.log(this.props.subBudget.id);
     request.setRequestHeader('Content-type', 'application/json')
     request.withCredentials = true
     request.onload = () => {
@@ -39,6 +38,7 @@ class SubBudgetWindow extends React.Component {
       let subBudget = this.state.subBudget
       subBudget.transactions = sortedTransactions
       this.setState({subBudgetAmount: newSubBudgetAmount, subBudget: subBudget})
+      this.props.onCreateTransactionUpdateTopBar()
     }
 
     request.send(null)

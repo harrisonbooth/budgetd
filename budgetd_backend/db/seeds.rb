@@ -24,33 +24,33 @@ lynn = User.create({
 })
 
 harrison.create_budget({
-  total: 3000,
-  originalTotal: 10099,
+  total: 30000,
+  originalTotal: 30000,
 })
 
 lynn.create_budget({
-  total: 999,
+  total: 1299,
   originalTotal: 1299
 })
 
-harrison.budget.sub_budgets.create({
-  amount: 1099,
-  name: "Coffee",
-  originalAmount: 1900
-})
+# harrison.budget.sub_budgets.create({
+#   amount: 4000,
+#   name: "Coffee",
+#   originalAmount: 4000
+# })
+#
+# harrison.budget.sub_budgets.create({
+#   amount: 10000,
+#   name: "Food",
+#   originalAmount: 10000
+# })
 
-harrison.budget.sub_budgets.create({
-  amount: 7899,
-  name: "Food",
-  originalAmount: 10000
-})
-
-harrison.budget.sub_budgets[0].transactions.create({
-  amount: 160,
-  location: "Filament"
-})
-
-harrison.budget.sub_budgets[0].transactions.create({
-  amount: 220,
-  location: "Noir"
-})
+# harrison.budget.sub_budgets[0].transactions.create({
+#   amount: 160,
+#   location: "Filament"
+# })
+#
+# harrison.budget.sub_budgets[0].transactions.create({
+#   amount: 220,
+#   location: "Noir"
+# })

@@ -16,6 +16,7 @@ class BudgetContainer extends React.Component{
 
     this.onSelectSubBudget = this.onSelectSubBudget.bind(this)
     this.onCreateBudget = this.onCreateBudget.bind(this)
+    this.calculateTotal = this.calculateTotal.bind(this)
   }
 
   componentDidMount() {
@@ -28,15 +29,23 @@ class BudgetContainer extends React.Component{
 
     request.onload = () => {
       if(request.status === 200){
-        // console.log("request: ", request.responseText)
         var data = JSON.parse(request.responseText)
-        this.setState( { budget: data, newBudgetTotal: data.total } )
+        this.setState( { budget: data } )
+        this.calculateTotal()
       } else{
         console.log("Uh oh you're not logged in!")
         browserHistory.goBack()
       }
     }
     request.send(null)
+  }
+
+  calculateTotal() {
+    let calculatedTotal = this.state.budget.originalTotal
+    this.state.budget.sub_budgets.forEach((subBudget) => {
+      calculatedTotal -= (subBudget.originalAmount - subBudget.amount)
+    })
+    this.setState({newBudgetTotal: calculatedTotal})
   }
 
   onCreateBudget(budget) {
@@ -47,8 +56,27 @@ class BudgetContainer extends React.Component{
     this.setState({selectedSubBudget: subBudget})
   }
 
-  onCreateSubBudget(newBudgetTotal) {
-    this.setState({newBudgetTotal})
+  onCreateSubBudget() {
+  }
+
+  onCreateTransaction() {
+    var url = 'http://localhost:5000/budget'
+    var request = new XMLHttpRequest()
+    request.open('GET', url)
+
+    request.setRequestHeader('Content-Type', "application/json")
+    request.withCredentials = true
+
+    request.onload = () => {
+      if(request.status === 200){
+        var data = JSON.parse(request.responseText)
+        this.setState( { budget: data } )
+        this.calculateTotal()
+      } else{
+        console.log("Uh oh you're not logged in!")
+      }
+    }
+    request.send(null)
   }
 
   render() {
@@ -63,7 +91,7 @@ class BudgetContainer extends React.Component{
         <Header budgetTotal={this.state.newBudgetTotal} budget={this.state.budget}/>
         <div className='budget-container-body'>
           <Sidebar onCreateSubBudget={this.onCreateSubBudget.bind(this)} budget={this.state.budget} onSelectSubBudget={this.onSelectSubBudget.bind(this)}/>
-          <SubBudgetWindow subBudget={this.state.selectedSubBudget}/>
+          <SubBudgetWindow onCreateTransactionUpdateTopBar={this.onCreateTransaction.bind(this)} subBudget={this.state.selectedSubBudget}/>
         </div>
       </div>
     )
