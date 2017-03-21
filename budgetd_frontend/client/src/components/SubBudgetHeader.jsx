@@ -16,7 +16,7 @@ class SubBudgetHeader extends React.Component {
           <p>monthly budget: £{(parseFloat(this.props.subBudget.originalAmount)/100).toFixed(2)}</p>
         </div>
         <div className="subbudget-bar-wrapper">
-          <BudgetBar maxWidth={200} total={this.props.subBudget.amount} originalTotal={this.props.subBudget.originalAmount}/>
+          <BudgetBar maxWidth={200} total={this.props.subBudgetAmount} originalTotal={this.props.subBudget.originalAmount}/>
         </div>
       </header>
     )
