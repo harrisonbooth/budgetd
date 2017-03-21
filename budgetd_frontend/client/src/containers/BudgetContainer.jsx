@@ -11,7 +11,7 @@ class BudgetContainer extends React.Component{
     this.state = {
       budget: null,
       selectedSubBudget: null,
-      newBudgetTotal: null
+      newBudgetTotal: 999999999999
     }
 
     this.onSelectSubBudget = this.onSelectSubBudget.bind(this)
