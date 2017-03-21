@@ -8,20 +8,23 @@ class Sidebar extends React.Component {
     super(props)
 
     this.state = {
-      subBudgets: this.props.budget.sub_budgets
+      subBudgets: this.props.budget.sub_budgets,
+      budgetTotal: this.props.budget.total
     }
 
     this.onCreateSubBudget = this.onCreateSubBudget.bind(this)
   }
 
   onCreateSubBudget(budget) {
-    this.setState({subBudgets: budget.sub_budgets})
+    let subBudgetAmount = budget.sub_budgets[budget.sub_budgets.length - 1].amount
+    let newBudgetTotal = budget.total - subBudgetAmount
+    this.setState({subBudgets: budget.sub_budgets, budgetTotal: newBudgetTotal})
   }
 
   render() {
     return (
       <div className="sidebar-wrapper">
-        <Overview total={this.props.budget.total} originalTotal={this.props.budget.originalTotal}/>
+        <Overview total={this.state.budgetTotal} originalTotal={this.props.budget.originalTotal}/>
         <SubBudgetList subBudgets={this.state.subBudgets} onSelectSubBudget={this.props.onSelectSubBudget}/>
         <NewSubBudget onCreateSubBudget={this.onCreateSubBudget.bind(this)}/>
       </div>
