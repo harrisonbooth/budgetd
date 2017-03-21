@@ -71,6 +71,12 @@ class BudgetContainer extends React.Component{
       if(request.status === 200){
         var data = JSON.parse(request.responseText)
         this.setState( { budget: data } )
+        this.state.budget.sub_budgets.forEach((subBudget) => {
+          if(subBudget.id === this.state.selectedSubBudget.id){
+            this.setState({selectedSubBudget: subBudget})
+            return
+          }
+        })
         this.calculateTotal()
       } else{
         console.log("Uh oh you're not logged in!")
