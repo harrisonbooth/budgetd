@@ -206,3 +206,13 @@ hr {
   font-family: sans-serif;
   text-align: center;
 }
+
+.transaction-table {
+  margin: 3px;
+  text-align: center;
+}
+
+.table-row {
+  color: white;
+  font-family: sans-serif;
+}

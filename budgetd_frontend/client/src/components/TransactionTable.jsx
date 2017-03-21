@@ -1,6 +1,6 @@
 import React from 'react'
 import TransactionTableHeadings from './TransactionTableHeadings'
-// import TransactionTableRow from './TransactionTableRow'
+import TransactionTableRow from './TransactionTableRow'
 
 class TransactionTable extends React.Component {
   constructor(props) {
@@ -25,11 +25,15 @@ class TransactionTable extends React.Component {
       <div>
         <table className="transaction-table">
           <TransactionTableHeadings subBudget={this.props.subBudget} />
+          <col width="450"/>
+          <col width="450"/>
+          <tbody>
+            {subBudgetRows}
+          </tbody>
         </table>
       </div>
     )
   }
 }
 
-// {subBudgetRows}
 export default TransactionTable

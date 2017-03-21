@@ -1,15 +1,17 @@
 import React from 'react'
 
 const TransactionTableHeadings = (props) => {
-
-  const tableHeadings = props.subBudget.transactions[0].keys.map((key) => {
-    return <th>{key}</th>
-  })
+  // const tableHeadings = Object.keys(props.subBudget.transactions[0]).map((key, index) => {
+  //   return <th key={index}>{key}</th>
+  // })
 
   return (
-    <tr>
-      {tableHeadings}
-    </tr>
+    <thead>
+      <tr className="table-headings table-row">
+        <th>Location</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
   )
 }
 
