@@ -159,7 +159,7 @@ hr {
 /* SubBudget Window */
 
 .subbudget-transactions-wrapper {
-  width: 1050px;
+  width: 950px;
   float: left;
   margin-top: 5px;
   margin-left: 5px;
@@ -191,7 +191,7 @@ hr {
  }
 
 .subbudget-overview p {
-  margin: 3px
+  margin: 3px;
 }
 
 .budget-bar {
@@ -199,4 +199,10 @@ hr {
 
 .subbudget-bar-wrapper {
   display: inline-block;
+}
+
+.greyed-text {
+  color: rgba(255,255,255,0.2);
+  font-family: sans-serif;
+  text-align: center;
 }
