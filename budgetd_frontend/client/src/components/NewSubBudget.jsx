@@ -9,7 +9,10 @@ class NewSubBudget extends React.Component{
     this.handleNameChange = this.handleNameChange.bind(this)
     this.createSubBudget = this.createSubBudget.bind(this)
 
-    this.state = {amount: 0, name: ""}
+    this.state = {
+      amount: 0,
+      name: ""
+    }
   }
 
   handleAmountChange(event) {
@@ -28,7 +31,7 @@ class NewSubBudget extends React.Component{
       return
     }
 
-    const request = new XMLHttpRequest();
+    const request = new XMLHttpRequest()
     request.open('POST', 'http://localhost:5000/budget/subbudgets')
     request.setRequestHeader('Content-type', 'application/json')
     request.withCredentials= true

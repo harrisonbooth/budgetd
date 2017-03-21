@@ -24,12 +24,14 @@ class TransactionTable extends React.Component {
     return (
       <div>
         <table className="transaction-table">
-          <TransactionTableHeadings subBudget={this.props.subBudget} />
-          <col width="450"/>
-          <col width="450"/>
-          <tbody>
-            {subBudgetRows}
-          </tbody>
+          <div className="table-wrapper">
+            <TransactionTableHeadings subBudget={this.props.subBudget} />
+            <col width="450"/>
+            <col width="450"/>
+            <tbody id="transaction-table-body">
+              {subBudgetRows}
+            </tbody>
+          </div>
         </table>
       </div>
     )

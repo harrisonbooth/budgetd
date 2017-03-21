@@ -10,6 +10,10 @@ body, html {
   width: 100%;
 }
 
+button {
+  transition-duration: 0.2s
+}
+
 /* Header */
 
 progress {
@@ -114,6 +118,15 @@ progress {
 .subbudget {
   color: white;
   font-family: sans-serif;
+  transition-duration: 0.2s
+}
+
+.subbudget:hover {
+  background-color: #8599E1;
+}
+
+.subbudget:active {
+  background-color: #606DA1;
 }
 
 .subbudget p {
@@ -224,10 +237,15 @@ hr {
 .transaction-table {
   margin: 3px;
   text-align: center;
-  overflow: scroll;
 }
 
 .table-row {
   color: white;
   font-family: sans-serif;
+}
+
+.table-wrapper {
+  overflow: scroll;
+  height: 400px;
+  width: 100%
 }

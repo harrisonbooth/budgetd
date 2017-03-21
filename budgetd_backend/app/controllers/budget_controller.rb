@@ -41,11 +41,11 @@ class BudgetController < ApplicationController
     subBudgetForTransaction = SubBudget.find(params[:id])
 
     subBudgetForTransaction.transactions.create({
-      amount: postBody.amount,
-      location: postBody.location
+      amount: postBody[:amount],
+      location: postBody[:location]
     })
 
-    newAmount = subBudgetForTransaction.amount - postBody.amount
+    newAmount = subBudgetForTransaction.amount - postBody[:amount]
 
     SubBudget.update(subBudgetForTransaction.id, amount: newAmount)
 

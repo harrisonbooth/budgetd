@@ -11,9 +11,6 @@ const BudgetBar = (props) => {
   const percentageThroughMonth = date.getDate() / 31
   let colour = "green"
 
-  console.log(percentageUsed);
-  console.log(percentageThroughMonth);
-
   if(percentageUsed > percentageThroughMonth + 0.2){
     colour = "red"
   } else if(percentageUsed < percentageThroughMonth + 0.2 && percentageUsed > percentageThroughMonth - 0.2){
