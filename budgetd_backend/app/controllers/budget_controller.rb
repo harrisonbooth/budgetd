@@ -62,6 +62,13 @@ class BudgetController < ApplicationController
     render json: userBudget()
   end
 
+  def reset
+    SubBudget.all.each { |sub_budget| SubBudget.update(sub_budget.id, {amount: sub_budget.originalAmount}) }
+    Transaction.delete_all
+
+    render json: userBudget()
+  end
+
   def index_transactions
     render json: Transaction.where({sub_budget_id: params[:id]})
   end
