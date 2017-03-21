@@ -35,7 +35,10 @@ class SubBudgetWindow extends React.Component {
 
       let transactionAmount = lastTransaction.amount
       let newSubBudgetAmount = this.state.subBudgetAmount - transactionAmount
-      this.setState({subBudgetAmount: newSubBudgetAmount})
+
+      let subBudget = this.state.subBudget
+      subBudget.transactions = sortedTransactions
+      this.setState({subBudgetAmount: newSubBudgetAmount, subBudget: subBudget})
     }
 
     request.send(null)
