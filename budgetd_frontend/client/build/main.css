@@ -27,6 +27,18 @@ progress {
   border-radius: 2px;
 }
 
+.red::-webkit-progress-value {
+  background-color: red;
+}
+
+.orange::-webkit-progress-value {
+  background-color: orange;
+}
+
+.green::-webkit-progress-value {
+  background-color: green
+}
+
 .header {
   background-color: #323A55;
   text-align: center;
@@ -160,6 +172,7 @@ hr {
 
 .subbudget-transactions-wrapper {
   width: 950px;
+  height: 537px;
   float: left;
   margin-top: 5px;
   margin-left: 5px;
@@ -210,6 +223,7 @@ hr {
 .transaction-table {
   margin: 3px;
   text-align: center;
+  overflow: scroll;
 }
 
 .table-row {
