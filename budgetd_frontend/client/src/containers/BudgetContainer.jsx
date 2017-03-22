@@ -90,8 +90,6 @@ class BudgetContainer extends React.Component{
   }
 
   onReset() {
-    this.onCreateTransaction()
-    browserHistory.push('/#/budget')
     window.location.reload()
   }
 
