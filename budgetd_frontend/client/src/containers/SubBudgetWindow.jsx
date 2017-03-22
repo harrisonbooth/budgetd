@@ -13,8 +13,6 @@ class SubBudgetWindow extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
-    console.log(this.state.subBudget);
     const nextPropsExist = nextProps.subBudget
     if(!nextPropsExist) return
 
