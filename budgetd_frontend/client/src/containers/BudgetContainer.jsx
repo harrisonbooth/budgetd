@@ -60,7 +60,7 @@ class BudgetContainer extends React.Component{
   }
 
   onCreateSubBudget() {
-    this.calculateTotal()
+    this.onCreateTransaction()
   }
 
   onCreateTransaction() {
@@ -124,7 +124,7 @@ class BudgetContainer extends React.Component{
       <div className='budget-container'>
         <Header onResetBudgets={this.onReset.bind(this)} budgetTotal={this.state.newBudgetTotal} budget={this.state.budget}/>
         <div className='budget-container-body'>
-          <Sidebar budgetTotal={this.state.newBudgetTotal} onCreateSubBudget={this.onCreateSubBudget.bind(this)} budget={this.state.budget} onSelectSubBudget={this.onSelectSubBudget.bind(this)}/>
+          <Sidebar subBudgets={this.state.budget.sub_budgets} budgetTotal={this.state.newBudgetTotal} onCreateSubBudget={this.onCreateSubBudget.bind(this)} budget={this.state.budget} onSelectSubBudget={this.onSelectSubBudget.bind(this)}/>
           <SubBudgetWindow handleSubbudgetDelete={this.handleSubbudgetDelete.bind(this)} onCreateTransactionUpdateTopBar={this.onCreateTransaction.bind(this)} subBudget={this.state.selectedSubBudget}/>
         </div>
       </div>
