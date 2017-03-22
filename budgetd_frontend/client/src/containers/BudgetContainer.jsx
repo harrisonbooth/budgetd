@@ -106,6 +106,7 @@ class BudgetContainer extends React.Component{
       if(request.status === 200){
         const updatedBudget = JSON.parse(request.responseText)
         this.setState({budget: updatedBudget, selectedSubBudget: null})
+        this.calculateTotal()
       }
     }
 
