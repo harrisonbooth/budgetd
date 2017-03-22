@@ -95,7 +95,6 @@ class BudgetContainer extends React.Component{
 
   handleSubbudgetDelete(event) {
     const request = new XMLHttpRequest()
-    console.log(this.state.selectedSubBudget.id);
     request.open('DELETE', 'http://localhost:5000/budget/subBudgets/' + this.state.selectedSubBudget.id)
     request.setRequestHeader('Content-Type', 'application/json')
     request.withCredentials = true
