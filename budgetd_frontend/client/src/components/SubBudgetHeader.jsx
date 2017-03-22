@@ -18,6 +18,7 @@ class SubBudgetHeader extends React.Component {
         <div className="subbudget-bar-wrapper">
           <BudgetBar maxWidth={200} total={this.props.subBudgetAmount} originalTotal={this.props.subBudget.originalAmount}/>
         </div>
+        <button className="subbudget-delete-button" onClick={this.props.handleSubbudgetDelete}>Delete subbudget</button>
       </header>
     )
   }

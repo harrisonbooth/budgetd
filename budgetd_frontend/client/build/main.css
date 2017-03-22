@@ -11,7 +11,7 @@ body, html {
 }
 
 button {
-  transition-duration: 0.2s
+  transition-duration: 0.2s;
   margin-top: 5px;
   margin-bottom: 5px;
   -webkit-appearance: none;
@@ -221,6 +221,7 @@ hr {
 .subbudget-header * {
   margin-left: 15px;
   margin-right: 15px;
+  clear: right;
 }
 
 #subbudget-name {
@@ -311,6 +312,18 @@ hr {
 }
 
 .new-transaction-form button:active {
+  background-color: #3A4262
+}
+
+.subbudget-delete-button {
+  float: right
+}
+
+.subbudget-delete-button:hover {
+  background-color: #5A6282
+}
+
+.subbudget-delete-button:active {
   background-color: #3A4262
 }
 

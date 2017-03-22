@@ -97,13 +97,15 @@ class BudgetContainer extends React.Component{
 
   handleSubbudgetDelete(event) {
     const request = new XMLHttpRequest()
+    console.log(this.state.selectedSubBudget.id);
     request.open('DELETE', 'http://localhost:5000/budget/subBudgets/' + this.state.selectedSubBudget.id)
     request.setRequestHeader('Content-Type', 'application/json')
     request.withCredentials = true
 
     request.onload = () => {
       if(request.status === 200){
-        this.state.selectedSubBudget = this.state.budget.sub_budgets[0]
+        const updatedBudget = JSON.parse(request.responseText)
+        this.setState({budget: updatedBudget, selectedSubBudget: null})
       }
     }
 
@@ -121,8 +123,8 @@ class BudgetContainer extends React.Component{
       <div className='budget-container'>
         <Header onResetBudgets={this.onReset.bind(this)} budgetTotal={this.state.newBudgetTotal} budget={this.state.budget}/>
         <div className='budget-container-body'>
-          <Sidebar budgetTotal={this.state.newBudgetTotal} handleSubbudgetDelete={this.handleSubbudgetDelete.bind(this)} onCreateSubBudget={this.onCreateSubBudget.bind(this)} budget={this.state.budget} onSelectSubBudget={this.onSelectSubBudget.bind(this)}/>
-          <SubBudgetWindow onCreateTransactionUpdateTopBar={this.onCreateTransaction.bind(this)} subBudget={this.state.selectedSubBudget}/>
+          <Sidebar budgetTotal={this.state.newBudgetTotal} onCreateSubBudget={this.onCreateSubBudget.bind(this)} budget={this.state.budget} onSelectSubBudget={this.onSelectSubBudget.bind(this)}/>
+          <SubBudgetWindow handleSubbudgetDelete={this.handleSubbudgetDelete.bind(this)} onCreateTransactionUpdateTopBar={this.onCreateTransaction.bind(this)} subBudget={this.state.selectedSubBudget}/>
         </div>
       </div>
     )
