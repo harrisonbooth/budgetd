@@ -31,6 +31,10 @@ class BudgetController < ApplicationController
 
     newTotal = budget.total - postBody[:amount]
 
+    if newTotal < 0
+      newTotal = 0
+    end
+
     Budget.update(budget.id, total: newTotal)
 
     render json: user_budget()
@@ -77,6 +81,10 @@ class BudgetController < ApplicationController
     budget = current_user.budget
     subbudget_for_deletion = SubBudget.find(params[:id])
     newTotal = budget.total + subbudget_for_deletion.originalAmount
+
+    if newTotal > budget.originalTotal
+      newTotal = budget.originalTotal
+    end
 
     Budget.update(budget.id, total: newTotal)
 

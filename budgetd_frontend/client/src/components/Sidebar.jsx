@@ -9,7 +9,7 @@ class Sidebar extends React.Component {
 
     this.state = {
       subBudgets: this.props.budget.sub_budgets,
-      budgetTotal: this.props.budget.total
+      budgetTotal: this.props.newBudgetTotal || this.props.budget.total
     }
 
     this.onCreateSubBudget = this.onCreateSubBudget.bind(this)
