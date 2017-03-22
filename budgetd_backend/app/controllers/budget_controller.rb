@@ -2,7 +2,7 @@ class BudgetController < ApplicationController
 
   before_action :authenticate_user!
 
-  def userBudget
+  def user_budget
     return current_user.budget.to_json(include: {
         sub_budgets: {
           include: {
@@ -16,10 +16,10 @@ class BudgetController < ApplicationController
   end
 
   def index
-    render json: userBudget()
+    render json: user_budget()
   end
 
-  def newSubBudget
+  def new_subbudget
     postBody = params[:newSubBudget]
     budget = current_user.budget
 
@@ -33,10 +33,10 @@ class BudgetController < ApplicationController
 
     Budget.update(budget.id, total: newTotal)
 
-    render json: userBudget()
+    render json: user_budget()
   end
 
-  def newTransaction
+  def new_transaction
     postBody = params[:newTransaction]
     subBudgetForTransaction = SubBudget.find(params[:id])
 
@@ -49,7 +49,7 @@ class BudgetController < ApplicationController
 
     SubBudget.update(subBudgetForTransaction.id, amount: newAmount)
 
-    render json: userBudget()
+    render json: user_budget()
   end
 
   def create
@@ -59,18 +59,30 @@ class BudgetController < ApplicationController
       originalTotal: params[:budget][:total]
     })
 
-    render json: userBudget()
+    render json: user_budget()
   end
 
   def reset
     SubBudget.all.each { |sub_budget| SubBudget.update(sub_budget.id, {amount: sub_budget.originalAmount}) }
     Transaction.delete_all
 
-    render json: userBudget()
+    render json: user_budget()
   end
 
   def index_transactions
     render json: Transaction.where({sub_budget_id: params[:id]})
+  end
+
+  def delete_subbudget
+    budget = current_user.budget
+    subbudget_for_deletion = SubBudget.find(params[:id])
+    newTotal = budget.total + subbudget_for_deletion.originalAmount
+
+    Budget.update(budget.id, total: newTotal)
+
+    SubBudget.destroy(params[:id])
+
+    render json: user_budget()
   end
 
 end

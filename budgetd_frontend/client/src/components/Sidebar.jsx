@@ -26,7 +26,7 @@ class Sidebar extends React.Component {
     return (
       <div className="sidebar-wrapper">
         <Overview total={this.state.budgetTotal} originalTotal={this.props.budget.originalTotal}/>
-        <SubBudgetList subBudgets={this.state.subBudgets} onSelectSubBudget={this.props.onSelectSubBudget}/>
+        <SubBudgetList handleSubbudgetDelete={this.props.handleSubbudgetDelete} subBudgets={this.state.subBudgets} onSelectSubBudget={this.props.onSelectSubBudget}/>
         <NewSubBudget onCreateSubBudget={this.onCreateSubBudget.bind(this)}/>
       </div>
     )

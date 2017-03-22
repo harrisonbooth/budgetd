@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
 
   delete 'budget/subBudgets/reset' => 'budget#reset'
+  delete 'budget/subBudgets/:id' => 'budget#delete_subbudget'
   get 'budget/subBudget/:id/transactions' => 'budget#index_transactions'
-  post 'budget/subBudgets/:id/newTransaction' => 'budget#newTransaction'
-  post 'budget/subbudgets' => 'budget#newSubBudget'
+  post 'budget/subBudgets/:id/newTransaction' => 'budget#new_transaction'
+  post 'budget/subbudgets' => 'budget#new_subbudget'
   resources :budget
   resources :users
 
