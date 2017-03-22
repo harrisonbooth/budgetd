@@ -42,8 +42,10 @@ class LoginBox extends React.Component {
   render() {
     if(this.state.currentUser){
       var children = <div className='login-box'>
+        <div className="login-form">
         <h4>Welcome back!</h4>
         <Link className='logged-in-link' to='/budget'>View your budget</Link>
+        </div>
       </div>
     } else {
       var children = <div className='login-box'>

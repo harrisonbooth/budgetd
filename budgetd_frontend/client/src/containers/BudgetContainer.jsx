@@ -114,7 +114,9 @@ class BudgetContainer extends React.Component{
   render() {
     if(!this.state.budget){
       return (
-        <NewBudget onCreateBudget={this.onCreateBudget.bind(this)}/>
+        <div className="login-form">
+          <NewBudget onCreateBudget={this.onCreateBudget.bind(this)}/>
+        </div>
       )
     }
 
