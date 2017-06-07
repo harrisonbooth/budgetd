@@ -20,38 +20,38 @@ class BudgetController < ApplicationController
   end
 
   def new_subbudget
-    postBody = params[:newSubBudget]
+    post_body = params[:newSubBudget]
     budget = current_user.budget
 
     budget.sub_budgets.create({
-      name: postBody[:name],
-      amount: postBody[:amount],
-      originalAmount: postBody[:amount],
+      name: post_body[:name],
+      amount: post_body[:amount],
+      originalAmount: post_body[:amount],
     })
 
-    newTotal = budget.total - postBody[:amount]
+    new_total = budget.total - post_body[:amount]
 
-    if newTotal < 0
-      newTotal = 0
+    if new_total < 0
+      new_total = 0
     end
 
-    Budget.update(budget.id, total: newTotal)
+    Budget.update(budget.id, total: new_total)
 
     render json: user_budget()
   end
 
   def new_transaction
-    postBody = params[:newTransaction]
-    subBudgetForTransaction = SubBudget.find(params[:id])
+    post_body = params[:newTransaction]
+    sub_budget_for_transaction = SubBudget.find(params[:id])
 
-    subBudgetForTransaction.transactions.create({
-      amount: postBody[:amount],
-      location: postBody[:location]
+    sub_budget_for_transaction.transactions.create({
+      amount: post_body[:amount],
+      location: post_body[:location]
     })
 
-    newAmount = subBudgetForTransaction.amount - postBody[:amount]
+    new_amount = sub_budget_for_transaction.amount - post_body[:amount]
 
-    SubBudget.update(subBudgetForTransaction.id, amount: newAmount)
+    SubBudget.update(sub_budget_for_transaction.id, amount: new_amount)
 
     render json: user_budget()
   end
@@ -80,13 +80,13 @@ class BudgetController < ApplicationController
   def delete_subbudget
     budget = current_user.budget
     subbudget_for_deletion = SubBudget.find(params[:id])
-    newTotal = budget.total + subbudget_for_deletion.originalAmount
+    new_total = budget.total + subbudget_for_deletion.originalAmount
 
-    if newTotal > budget.originalTotal
-      newTotal = budget.originalTotal
+    if new_total > budget.originalTotal
+      new_total = budget.originalTotal
     end
 
-    Budget.update(budget.id, total: newTotal)
+    Budget.update(budget.id, total: new_total)
 
     SubBudget.destroy(params[:id])
 
