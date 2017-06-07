@@ -17,6 +17,7 @@ class BudgetContainer extends React.Component{
     this.onSelectSubBudget = this.onSelectSubBudget.bind(this)
     this.onCreateBudget = this.onCreateBudget.bind(this)
     this.calculateTotal = this.calculateTotal.bind(this)
+    this.onResetBudgets = this.onResetBudgets.bind(this)
   }
 
   componentDidMount() {
@@ -89,7 +90,20 @@ class BudgetContainer extends React.Component{
     request.send(null)
   }
 
-  onReset() {
+  onResetBudgets(event) {
+    event.preventDefault()
+    const request = new XMLHttpRequest()
+    request.open('DELETE', 'http://localhost:5000/budget/subBudgets/reset')
+    request.setRequestHeader('Content-type', 'application/json')
+    request.withCredentials = true
+
+    request.onload = () => {
+      if(request.status === 200){
+        this.props.onResetBudgets()
+      }
+    }
+
+    request.send(null)
     window.location.reload()
   }
 
@@ -121,7 +135,7 @@ class BudgetContainer extends React.Component{
 
     return (
       <div className='budget-container'>
-        <Header onResetBudgets={this.onReset.bind(this)} budgetTotal={this.state.newBudgetTotal} budget={this.state.budget}/>
+        <Header onResetBudgets={this.onResetBudgets} budgetTotal={this.state.newBudgetTotal} budget={this.state.budget}/>
         <div className='budget-container-body'>
           <Sidebar subBudgets={this.state.budget.sub_budgets} budgetTotal={this.state.newBudgetTotal} onCreateSubBudget={this.onCreateSubBudget.bind(this)} budget={this.state.budget} onSelectSubBudget={this.onSelectSubBudget.bind(this)}/>
           <SubBudgetWindow handleSubbudgetDelete={this.handleSubbudgetDelete.bind(this)} onCreateTransactionUpdateTopBar={this.onCreateTransaction.bind(this)} subBudget={this.state.selectedSubBudget}/>

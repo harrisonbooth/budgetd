@@ -12810,6 +12810,7 @@ var BudgetContainer = function (_React$Component) {
     _this.onSelectSubBudget = _this.onSelectSubBudget.bind(_this);
     _this.onCreateBudget = _this.onCreateBudget.bind(_this);
     _this.calculateTotal = _this.calculateTotal.bind(_this);
+    _this.onResetBudgets = _this.onResetBudgets.bind(_this);
     return _this;
   }
 
@@ -12894,14 +12895,29 @@ var BudgetContainer = function (_React$Component) {
       request.send(null);
     }
   }, {
-    key: 'onReset',
-    value: function onReset() {
+    key: 'onResetBudgets',
+    value: function onResetBudgets(event) {
+      var _this4 = this;
+
+      event.preventDefault();
+      var request = new XMLHttpRequest();
+      request.open('DELETE', 'http://localhost:5000/budget/subBudgets/reset');
+      request.setRequestHeader('Content-type', 'application/json');
+      request.withCredentials = true;
+
+      request.onload = function () {
+        if (request.status === 200) {
+          _this4.props.onResetBudgets();
+        }
+      };
+
+      request.send(null);
       window.location.reload();
     }
   }, {
     key: 'handleSubbudgetDelete',
     value: function handleSubbudgetDelete(event) {
-      var _this4 = this;
+      var _this5 = this;
 
       var request = new XMLHttpRequest();
       request.open('DELETE', 'http://localhost:5000/budget/subBudgets/' + this.state.selectedSubBudget.id);
@@ -12911,8 +12927,8 @@ var BudgetContainer = function (_React$Component) {
       request.onload = function () {
         if (request.status === 200) {
           var updatedBudget = JSON.parse(request.responseText);
-          _this4.setState({ budget: updatedBudget, selectedSubBudget: null });
-          _this4.calculateTotal();
+          _this5.setState({ budget: updatedBudget, selectedSubBudget: null });
+          _this5.calculateTotal();
         }
       };
 
@@ -12932,7 +12948,7 @@ var BudgetContainer = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         { className: 'budget-container' },
-        _react2.default.createElement(_Header2.default, { onResetBudgets: this.onReset.bind(this), budgetTotal: this.state.newBudgetTotal, budget: this.state.budget }),
+        _react2.default.createElement(_Header2.default, { onResetBudgets: this.onResetBudgets, budgetTotal: this.state.newBudgetTotal, budget: this.state.budget }),
         _react2.default.createElement(
           'div',
           { className: 'budget-container-body' },
@@ -13498,8 +13514,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
@@ -13518,41 +13532,20 @@ var _ResetBudgets2 = _interopRequireDefault(_ResetBudgets);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Header = function (_React$Component) {
-  _inherits(Header, _React$Component);
-
-  function Header(props) {
-    _classCallCheck(this, Header);
-
-    return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this, props));
-  }
-
-  _createClass(Header, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'header',
-        { className: 'header' },
-        _react2.default.createElement(
-          'h1',
-          { id: 'logo' },
-          'Budget\'d'
-        ),
-        _react2.default.createElement(_BudgetBar2.default, { maxWidth: 500, total: this.props.budgetTotal, originalTotal: this.props.budget.originalTotal }),
-        _react2.default.createElement(_ResetBudgets2.default, { onResetBudgets: this.props.onResetBudgets }),
-        _react2.default.createElement(_SignOut2.default, { url: 'http://localhost:5000/users/sign_out' })
-      );
-    }
-  }]);
-
-  return Header;
-}(_react2.default.Component);
+var Header = function Header(props) {
+  return _react2.default.createElement(
+    'header',
+    { className: 'header' },
+    _react2.default.createElement(
+      'h1',
+      { id: 'logo' },
+      'Budget\'d'
+    ),
+    _react2.default.createElement(_BudgetBar2.default, { maxWidth: 500, total: props.budgetTotal, originalTotal: props.budget.originalTotal }),
+    _react2.default.createElement(_ResetBudgets2.default, { onResetBudgets: props.onResetBudgets }),
+    _react2.default.createElement(_SignOut2.default, { url: 'http://localhost:5000/users/sign_out' })
+  );
+};
 
 exports.default = Header;
 
@@ -13810,68 +13803,23 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var ResetBudgets = function (_React$Component) {
-  _inherits(ResetBudgets, _React$Component);
-
-  function ResetBudgets() {
-    _classCallCheck(this, ResetBudgets);
-
-    var _this = _possibleConstructorReturn(this, (ResetBudgets.__proto__ || Object.getPrototypeOf(ResetBudgets)).call(this));
-
-    _this.reset = _this.reset.bind(_this);
-    return _this;
-  }
-
-  _createClass(ResetBudgets, [{
-    key: 'reset',
-    value: function reset(event) {
-      var _this2 = this;
-
-      event.preventDefault();
-      var request = new XMLHttpRequest();
-      request.open('DELETE', 'http://localhost:5000/budget/subBudgets/reset');
-      request.setRequestHeader('Content-type', 'application/json');
-      request.withCredentials = true;
-
-      request.onload = function () {
-        if (request.status === 200) {
-          _this2.props.onResetBudgets();
-        }
-      };
-
-      request.send(null);
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        { className: 'reset-button-wrapper' },
-        _react2.default.createElement(
-          'button',
-          { className: 'reset-button', onClick: this.reset },
-          'Reset budgets'
-        )
-      );
-    }
-  }]);
-
-  return ResetBudgets;
-}(_react2.default.Component);
+var ResetBudgets = function ResetBudgets(props) {
+  return _react2.default.createElement(
+    "div",
+    { className: "reset-button-wrapper" },
+    _react2.default.createElement(
+      "button",
+      { className: "reset-button", onClick: props.onResetBudgets },
+      "Reset budgets"
+    )
+  );
+};
 
 exports.default = ResetBudgets;
 
